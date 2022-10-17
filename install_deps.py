@@ -56,9 +56,21 @@ class VimInspector:
     def post_configure(self):
         pass
 
+class VimGTest:
+    git_clone_cmd = 'git clone https://github.com/alepez/vim-gtest.git'
+
+    def clone(self):
+        subprocess.check_call(self.git_clone_cmd, shell=True)
+
+    def install(self):
+        pass
+
+    def post_configure(self):
+        pass
 
 
-packages = [AwesomeVimrc, VimYCM, VimClangFormat, VimClangFormat]
+
+packages = [AwesomeVimrc, VimYCM, VimClangFormat, VimClangFormat, VimGTest]
 
 def setup_package(package):
     package.clone()
