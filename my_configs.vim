@@ -25,6 +25,7 @@ let g:ycm_error_symbol = '>>'                   " The error symbol in Vim gutter
 let g:ycm_enable_diagnostic_signs = 1           " Display icons in Vim's gutter, error, warnings
 let g:ycm_enable_diagnostic_highlighting = 1    " Highlight regions of diagnostic text
 let g:ycm_echo_current_diagnostic = 1           " Echo line's diagnostic that cursor is on
+let g:ycm_clangd_args=['--header-insertion=never']
 
 set completeopt-=preview
 
@@ -51,4 +52,16 @@ autocmd FileType c ClangFormatAutoEnable
 
 autocmd VimEnter * NERDTree
 
-
+"GTest
+augroup GTest
+	autocmd FileType cpp nnoremap <silent> <leader>tt :GTestRun<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tu :GTestRunUnderCursor<CR>
+	autocmd FileType cpp nnoremap          <leader>tc :GTestCase<space>
+	autocmd FileType cpp nnoremap          <leader>tn :GTestName<space>
+	autocmd FileType cpp nnoremap <silent> <leader>te :GTestToggleEnabled<CR>
+	autocmd FileType cpp nnoremap <silent> ]T         :GTestNext<CR>
+	autocmd FileType cpp nnoremap <silent> [T         :GTestPrev<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tf :CtrlPGTest<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tj :GTestJump<CR>
+	autocmd FileType cpp nnoremap          <leader>ti :GTestNewTest<CR>i
+augroup END
