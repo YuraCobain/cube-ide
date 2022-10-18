@@ -78,6 +78,23 @@ class VimInspector:
     def post_configure(self):
         pass
 
+class VimGTest:
+    git_clone_cmd =  https://github.com/alepez/vim-gtest.git
+
+def is_installed(self):
+        return os.path.exists(f'{HOME_DIR}/.vim_runtime/my_plugins/vim-gtest')
+
+    def clone(self):
+        os.chdir(f'{HOME_DIR}/.vim_runtime/my_plugins/')
+        subprocess.check_call(self.git_clone_cmd, shell=True)
+
+    def install(self):
+        pass
+
+    def post_configure(self):
+        pass
+
+
 class Fzf:
     git_clone_cmd = 'git clone https://github.com/junegunn/fzf.git ~/.fzf'
     install_cmd = "yes | ~/.fzf/install"

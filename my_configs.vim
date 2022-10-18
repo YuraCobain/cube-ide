@@ -50,8 +50,6 @@ autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 autocmd FileType c ClangFormatAutoEnable
 
-autocmd VimEnter * NERDTree
-
 "GTest
 augroup GTest
 	autocmd FileType cpp nnoremap <silent> <leader>tt :GTestRun<CR>
@@ -65,3 +63,5 @@ augroup GTest
 	autocmd FileType cpp nnoremap <silent> <leader>tj :GTestJump<CR>
 	autocmd FileType cpp nnoremap          <leader>ti :GTestNewTest<CR>i
 augroup END
+
+autocmd VimEnter * NERDTree
