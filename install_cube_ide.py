@@ -79,7 +79,7 @@ class VimInspector:
         pass
 
 class VimGTest:
-    git_clone_cmd = 'https://github.com/alepez/vim-gtest.git'
+    git_clone_cmd = 'git clone https://github.com/alepez/vim-gtest.git'
 
     def is_installed(self):
         return os.path.exists(f'{HOME_DIR}/.vim_runtime/my_plugins/vim-gtest')
