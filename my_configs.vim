@@ -1,5 +1,6 @@
 set number
 set gfn=IBM\ Plex\ Mono\ 10
+colorscheme desert
 
 " YCM mapping
 nnoremap <leader>yl :YcmCompleter GoToDeclaration<CR>
@@ -7,12 +8,13 @@ nnoremap <leader>yf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>yy :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>ys :YcmCompleter GoToReferences<CR>
 nnoremap <leader>yr :<c-u>YcmCompleter RefactorRename <C-R>=Abolish.Coercions.s(expand("<cword>"))<CR>
+nnoremap <leader>yi :YcmCompleter FixIt<CR>
 
 " Close preview window after completing the insertion
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-let g:ycm_confirm_extra_conf = 0                " Don't confirm python conf
+let g:ycm_confirm_extra_conf = 1                " Don't confirm python conf
 let g:ycm_always_populate_location_list = 1     " Always populae diagnostics list
 let g:ycm_enable_diagnostic_signs = 1           " Enable line highligting diagnostics
 let g:ycm_open_loclist_on_ycm_diags = 1         " Open location list to view diagnostics
@@ -64,4 +66,6 @@ augroup GTest
 	autocmd FileType cpp nnoremap          <leader>ti :GTestNewTest<CR>i
 augroup END
 
-autocmd VimEnter * NERDTree
+"autocmd! VimEnter * NERDTree | wincmd w
+"autocmd BufWinEnter * NERDTreeMirror
+"

@@ -79,9 +79,9 @@ class VimInspector:
         pass
 
 class VimGTest:
-    git_clone_cmd =  https://github.com/alepez/vim-gtest.git
+    git_clone_cmd = 'https://github.com/alepez/vim-gtest.git'
 
-def is_installed(self):
+    def is_installed(self):
         return os.path.exists(f'{HOME_DIR}/.vim_runtime/my_plugins/vim-gtest')
 
     def clone(self):
@@ -111,7 +111,7 @@ class Fzf:
     def post_configure(self):
         pass
 
-packages = [AwesomeVimrc(), VimYCM(), VimClangFormat(), VimClangFormat(), Fzf()]
+packages = [AwesomeVimrc(), VimYCM(), VimClangFormat(), VimClangFormat(), Fzf(), VimGTest()]
 
 def setup_package(package):
     print(package.__class__.__name__)
