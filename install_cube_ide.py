@@ -46,7 +46,7 @@ class VimYCM:
 
 class VimClangFormat:
     git_clone_cmd = 'git clone https://github.com/rhysd/vim-clang-format.git'
-    install_cmd = "sudo apt install clang-format"
+    install_cmd = "sudo apt install clang-format -y"
 
     def is_installed(self):
         return os.path.exists(f'{HOME_DIR}/.vim_runtime/my_plugins/vim-clang-format')
