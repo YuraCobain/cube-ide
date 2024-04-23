@@ -1,14 +1,20 @@
 set number
-set gfn=IBM\ Plex\ Mono\ 10
+set gfn=IBM\ Plex\ Mono\ 12
 colorscheme desert
+
+set tabstop=4 softtabstop=4 shiftwidth=4
+set expandtab
+set number ruler
+set autoindent smartindent
 
 " YCM mapping
 nnoremap <leader>yl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>yf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>yd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>yi :YcmCompleter GoToImplementation<CR>
 nnoremap <leader>yy :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>ys :YcmCompleter GoToReferences<CR>
 nnoremap <leader>yr :<c-u>YcmCompleter RefactorRename <C-R>=Abolish.Coercions.s(expand("<cword>"))<CR>
-nnoremap <leader>yi :YcmCompleter FixIt<CR>
+nnoremap <leader>yf :YcmCompleter FixIt<CR>
 
 " Close preview window after completing the insertion
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -29,19 +35,29 @@ let g:ycm_enable_diagnostic_highlighting = 1    " Highlight regions of diagnosti
 let g:ycm_echo_current_diagnostic = 1           " Echo line's diagnostic that cursor is on
 let g:ycm_clangd_args=['--header-insertion=never']
 
+"Toggle YouCompleteMe on and off with F3
+function Toggle_ycm()
+    if g:ycm_show_diagnostics_ui == 0
+        let g:ycm_auto_trigger = 1
+        let g:ycm_show_diagnostics_ui = 1
+        :YcmRestartServer
+        :e
+        :echo "YCM on"
+    elseif g:ycm_show_diagnostics_ui == 1
+        let g:ycm_auto_trigger = 0
+        let g:ycm_show_diagnostics_ui = 0
+        :YcmRestartServer
+        :e
+        :echo "YCM off"
+    endif
+endfunction
+map <F2> :call Toggle_ycm() <CR>
+
 set completeopt-=preview
 
 "vimspector mapping
 let g:vimspector_enable_mappings = 'HUMAN'
 nnoremap <leader>dd :call vimspector#Launch() <CR>
-
-let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "SortIncludes" : "false",
-            \ "ColumnLimit" : 100,
-            \ "Standard" : "C++11"}
 
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>

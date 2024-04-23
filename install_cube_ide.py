@@ -62,6 +62,43 @@ class VimClangFormat:
     def post_configure(self):
         pass
 
+class VimSwap:
+    git_clone_cmd = 'git clone https://github.com/machakann/vim-swap.git'
+    install_cmd = ""
+
+    def is_installed(self):
+        return os.path.exists(f'{HOME_DIR}/.vim_runtime/my_plugins/vim-swap')
+
+    def clone(self):
+        os.chdir(f'{HOME_DIR}/.vim_runtime/my_plugins/')
+        subprocess.check_call(self.git_clone_cmd, shell=True)
+        os.chdir(f'{HOME_DIR}/.vim_runtime/my_plugins/vim-swap')
+
+    def install(self):
+        subprocess.check_call(self.install_cmd, shell=True)
+
+    def post_configure(self):
+        pass
+
+class VimIndentLine:
+    git_clone_cmd = 'git clone https://github.com/Yggdroot/indentLine.git'
+    install_cmd = ""
+
+    def is_installed(self):
+        return os.path.exists(f'{HOME_DIR}/.vim_runtime/my_plugins/indentLine')
+
+    def clone(self):
+        os.chdir(f'{HOME_DIR}/.vim_runtime/my_plugins/')
+        subprocess.check_call(self.git_clone_cmd, shell=True)
+        os.chdir(f'{HOME_DIR}/.vim_runtime/my_plugins/indentLine')
+
+    def install(self):
+        subprocess.check_call(self.install_cmd, shell=True)
+
+    def post_configure(self):
+        pass
+
+
 class VimInspector:
     git_clone_cmd = 'git clone https://github.com/puremourning/vimspector.git'
 
@@ -111,7 +148,7 @@ class Fzf:
     def post_configure(self):
         pass
 
-packages = [AwesomeVimrc(), VimYCM(), VimClangFormat(), VimClangFormat(), Fzf(), VimGTest()]
+packages = [AwesomeVimrc(), VimYCM(), VimClangFormat(), VimClangFormat(), Fzf(), VimGTest(), VimSwap(), VimIndentLine()]
 
 def setup_package(package):
     print(package.__class__.__name__)
